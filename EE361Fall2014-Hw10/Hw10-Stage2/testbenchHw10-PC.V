@@ -1,0 +1,77 @@
+// EE 361 Hw10
+// Testbench for Program Counter and PC Logic
+
+module testbenchHw10_PC;
+
+wire [15:0] pc_next;
+reg [15:0] pc;
+reg clock;
+reg [15:0] signext;
+reg branch;
+reg alu_zero;
+reg reset;
+
+// Instantiation
+
+PCLogic PC_Circuit(
+				// Outputs
+		pc_next,	//   next value of pc
+				// Inputs
+		pc,		//   current value
+		signext,	//   sign extension from 7 bit constant
+		branch,	//   beq instruction
+		alu_zero,	//   zero from ALU, used in cond branch
+		reset		//   reset input
+		);
+
+// clock signal generation
+initial clock=0;
+always #1 clock = ~clock;
+
+ // Create a Program Counter
+always @(posedge clock) pc <= pc_next;
+
+initial
+	begin
+	branch=0; // Initialize the inputs to the PC control
+	alu_zero=0;
+	signext=6;  // Signext = 6 will be relevant later
+	reset=1;  // Reset PC to 0
+	#2
+	reset=0;  // Disable reset so PC should start changing
+	#6	     // Next 3 clock cycles, PC should increment
+	branch=1; // branch instruction but won't branch
+                // since alu_zero =0
+	#2
+	alu_zero=1;   //This will cause a branch forward by 12
+	#2
+	branch = 0;  // This will disable the branch
+	#2
+	alu_zero=0;  // This will also disable the branch 
+	#2
+	branch=1;  // Does not cause a branch because alu_zero=0
+	#6		// PC will increment as usual
+	signext = -3;  // This causes a backward branch by -6
+	branch=1;
+	alu_zero=1;  
+	#2
+	branch=0;    // PC increments
+	alu_zero=0;
+	#6
+	
+	$finish;
+	end
+
+
+initial
+	$monitor("pc=%d signext=%d br=%b aluz=%b reset=%b clk=%b",
+		pc,
+		signext,
+		branch,
+		alu_zero,
+		reset,
+		clock
+		);
+
+endmodule
+

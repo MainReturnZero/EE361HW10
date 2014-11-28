@@ -1,0 +1,85 @@
+
+
+Veriwell version 2.8.7, 
+Copyright (C) 1993-2008 Elliot Mednick and Mark Hummel
+
+Veriwell comes with ABSOLUTELY NO WARRANTY; This is free
+software, and you are welcome to redistribute it under the
+terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License,
+or (at your option) any later version. 
+
+lxt  support compiled in
+lxt2 support compiled in
+
+Entering Phase I...
+Compiling source file : mips-parts.v
+Compiling source file : testbenchhw10-parts-dmem.v
+Compiling source file : testbenchhw10-parts-combcirc.v
+Compiling source file : testbenchhw10-parts-rfile.v
+
+Entering Phase II...
+Entering Phase III...
+No errors in compilation
+Top-level modules:
+   testbench
+   testbenchHw9MIPSPartsCombParts
+   testbench
+
+Adr=address Rd=Read data Wr=Write data we=write enable, re=read enable dsp=I/O display sw =I/O input switches cl=Clock
+
+input[0000000000000100, 0000000000000011, 0000000000000010, 0000000000000001]
+
+ALU = ADD
+Mux2(Select,Output),Mux4(Select,Output), ALU(Select,Output,zero)
+
+Read1[000]=0000000000000000 Read2[001]=xxxxxxxxxxxxxxxx Write[001]=0000000000001001 write=0 clock=0
+Read1[000]=0000000000000000 Read2[001]=xxxxxxxxxxxxxxxx Write[001]=0000000000001001 write=0 clock=1
+Read1[000]=0000000000000000 Read2[001]=xxxxxxxxxxxxxxxx Write[001]=0000000000001001 write=0 clock=0
+Read1[000]=0000000000000000 Read2[001]=xxxxxxxxxxxxxxxx Write[001]=0000000000001001 write=0 clock=1
+ALU = Subtract
+Read1[000]=0000000000000000 Read2[001]=xxxxxxxxxxxxxxxx Write[001]=0000000000001001 write=1 clock=0
+Read1[000]=0000000000000000 Read2[001]=0000000000001001 Write[001]=0000000000001001 write=1 clock=1
+Read1[000]=0000000000000000 Read2[001]=0000000000001001 Write[001]=0000000000001001 write=0 clock=0
+Read1[000]=0000000000000000 Read2[001]=0000000000001001 Write[001]=0000000000001001 write=0 clock=1
+ALU = SLT
+Read1[000]=0000000000000000 Read2[001]=0000000000001001 Write[001]=0000000000001001 write=0 clock=0
+Read1[000]=0000000000000000 Read2[001]=0000000000001001 Write[001]=0000000000001001 write=0 clock=1
+Read1[110]=xxxxxxxxxxxxxxxx Read2[001]=0000000000001001 Write[110]=0000000000000111 write=0 clock=0
+Read1[110]=xxxxxxxxxxxxxxxx Read2[001]=0000000000001001 Write[110]=0000000000000111 write=0 clock=1
+ALU = OR
+Read1[110]=xxxxxxxxxxxxxxxx Read2[001]=0000000000001001 Write[110]=0000000000000111 write=0 clock=0
+Read1[110]=xxxxxxxxxxxxxxxx Read2[001]=0000000000001001 Write[110]=0000000000000111 write=0 clock=1
+Read1[110]=xxxxxxxxxxxxxxxx Read2[001]=0000000000001001 Write[110]=0000000000000111 write=1 clock=0
+Read1[110]=0000000000000111 Read2[001]=0000000000001001 Write[110]=0000000000000111 write=1 clock=1
+ALU = AND
+Read1[110]=0000000000000111 Read2[001]=0000000000001001 Write[110]=0000000000000111 write=0 clock=0
+Read1[110]=0000000000000111 Read2[001]=0000000000001001 Write[110]=0000000000000111 write=0 clock=1
+Read1[110]=0000000000000111 Read2[001]=0000000000001001 Write[110]=0000000000000111 write=0 clock=0
+Read1[110]=0000000000000111 Read2[001]=0000000000001001 Write[110]=0000000000000111 write=0 clock=1
+
+input[0000000000000100, 0000000000000111, 0000000000000010, 0000000000000001]
+
+ALU = ADD
+Read1[110]=0000000000000111 Read2[000]=0000000000000000 Write[110]=0000000000000111 write=0 clock=0
+Read1[110]=0000000000000111 Read2[000]=0000000000000000 Write[110]=0000000000000111 write=0 clock=1
+Read1[110]=0000000000000111 Read2[000]=0000000000000000 Write[110]=0000000000000111 write=0 clock=0
+Read1[110]=0000000000000111 Read2[000]=0000000000000000 Write[110]=0000000000000111 write=0 clock=1
+ALU = SUB
+Read1[110]=0000000000000111 Read2[000]=0000000000000000 Write[000]=0000000000000111 write=0 clock=0
+Read1[110]=0000000000000111 Read2[000]=0000000000000000 Write[000]=0000000000000111 write=0 clock=1
+Read1[110]=0000000000000111 Read2[000]=0000000000000000 Write[000]=0000000000000111 write=0 clock=0
+Read1[110]=0000000000000111 Read2[000]=0000000000000000 Write[000]=0000000000000111 write=0 clock=1
+ALU = SLT
+Read1[110]=0000000000000111 Read2[000]=0000000000000000 Write[000]=0000000000000111 write=1 clock=0
+Read1[110]=0000000000000111 Read2[000]=0000000000000000 Write[000]=0000000000000111 write=1 clock=1
+Read1[110]=0000000000000111 Read2[000]=0000000000000000 Write[000]=0000000000000111 write=0 clock=0
+Read1[110]=0000000000000111 Read2[000]=0000000000000000 Write[000]=0000000000000111 write=0 clock=1
+ALU = OR
+Read1[110]=0000000000000111 Read2[000]=0000000000000000 Write[000]=0000000000000111 write=0 clock=0
+Read1[110]=0000000000000111 Read2[000]=0000000000000000 Write[000]=0000000000000111 write=0 clock=1
+Exiting Veriwell at time 34
+0 Errors, 0 Warnings, Compile time = 0.0, Load time = 0.0, Simulation time = 0.0
+
+Normal exit
+Thank you for using Veriwell
